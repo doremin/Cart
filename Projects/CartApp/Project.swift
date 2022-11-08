@@ -8,5 +8,10 @@ let project = Project.app(
   dependencies: [
     .project(target: "CartCore", path: .relativeToManifest("../CartCore")),
     .project(target: "CartUI", path: .relativeToManifest("../CartUI"))
-  ]
+  ],
+  infoPlist: .extendingDefault(with: [
+    "UILaunchScreen": .dictionary([
+      "UIColorName": .string("")
+    ]),
+  ])
 )

@@ -5,7 +5,8 @@ extension Project {
     name: String,
     bundleID: String,
     platform: Platform,
-    dependencies: [TargetDependency]
+    dependencies: [TargetDependency],
+    infoPlist: InfoPlist = .default
   ) -> Project {
     Project(
       name: name,
@@ -15,6 +16,7 @@ extension Project {
           platform: platform,
           product: .app,
           bundleId: "\(bundleID).\(name)",
+          infoPlist: infoPlist,
           sources: ["Sources/**"],
           dependencies: dependencies
         ),
@@ -36,6 +38,7 @@ extension Project {
       ]
     )
   }
+  
   
   public static func framework(
     name: String,
