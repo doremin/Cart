@@ -1,5 +1,8 @@
 import UIKit
 
+import FlexLayout
+import PinLayout
+
 public class BaseView: UIView {
   public override init(frame: CGRect) {
     super.init(frame: frame)

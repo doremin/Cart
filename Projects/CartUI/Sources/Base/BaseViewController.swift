@@ -1,6 +1,6 @@
 import UIKit
 
-//import FlexLayout
+import FlexLayout
 import PinLayout
 import RxCocoa
 import RxSwift
