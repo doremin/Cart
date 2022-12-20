@@ -6,7 +6,8 @@
 $ tuist fetch
 ```
 
-2. pin layout 따로 빌드 (pin layout에서 PinLayout/TestProjects를 빌드하면서 에러가 발생한다고 함) from: [민소네님의 예시 프로젝트](https://github.com/minsOne/iOSApplicationTemplate)
+2. pin layout 따로 빌드 (pin layout에서 PinLayout/TestProjects를 빌드하면서 에러가 발생한다고 함) 
+from: [민소네님의 예시 프로젝트](https://github.com/minsOne/iOSApplicationTemplate)
 ```
 $ rm -rf Tuist/Dependencies/Carthage/Checkouts/PinLayout/TestProjects
 $ carthage build PinLayout --project-directory Tuist/Dependencies --platform iOS --use-xcframeworks --no-use-binaries --use-netrc --cache-builds --verbose
