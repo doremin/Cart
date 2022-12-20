@@ -1,11 +1,6 @@
-//
-//  AppDelegate.swift
-//  CartApp
-//
-//  Created by doremin on 2022/11/08.
-//
-
 import UIKit
+
+import CartUI
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -16,9 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?
   ) -> Bool {
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    let a = UIViewController()
-    a.view.backgroundColor = .yellow
-    self.window?.rootViewController = a
+    let viewModel = HomeViewModel()
+    self.window?.rootViewController = HomeViewController(viewModel: viewModel)
     self.window?.makeKeyAndVisible()
     
     return true

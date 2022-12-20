@@ -9,6 +9,7 @@ let project = Project.framework(
     .external(name: "RxSwift"),
     .external(name: "RxCocoa"),
     .external(name: "PinLayout"),
-    .external(name: "FlexLayout")
+    .external(name: "FlexLayout"),
+    .project(target: "CartCore", path: .relativeToManifest("../CartCore")),
   ]
 )

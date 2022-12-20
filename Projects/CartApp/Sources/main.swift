@@ -1,8 +1,16 @@
 import UIKit
 
-UIApplicationMain(
+private func isTesting() -> Bool {
+  return NSClassFromString("XCTestCase") != nil
+}
+
+private func appDelegateClassName() -> String {
+  return isTesting() ? "CartApp.StubAppDelegate" : NSStringFromClass(AppDelegate.self)
+}
+
+_ = UIApplicationMain(
   CommandLine.argc,
   CommandLine.unsafeArgv,
   NSStringFromClass(UIApplication.self),
-  NSStringFromClass(AppDelegate.self)
+  appDelegateClassName()
 )
