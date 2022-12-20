@@ -1,16 +1,11 @@
 import UIKit
 
-import FlexLayout
+import SnapKit
 
 final public class HomeViewController: BaseViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
     
-    #if FLEXLAYOUT_SWIFT_PACKAGE
-      print("adsad")
-    #elseif KK
-      print("asdsadsad")
-    #endif
   }
   
   public override func loadView() {
