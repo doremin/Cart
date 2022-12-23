@@ -16,7 +16,7 @@ class SettingsCoordinator: CoordinatorType {
     guard let presenter = self.presenter as? UINavigationController else {
       return
     }
-    let settingsViewModel = SettingsViewModel()
+    let settingsViewModel = SettingsViewModel(model: .init())
     let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
     settingsViewController.title = "Settings"
     settingsViewController.tabBarItem.image = UIImage(systemName: "gearshape.fill")

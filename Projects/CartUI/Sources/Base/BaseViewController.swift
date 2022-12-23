@@ -6,11 +6,11 @@ import RxCocoa
 import RxSwift
 
 public class BaseViewController: UIViewController {
-  private var disposeBag = DisposeBag()
-  public var viewModel: any ViewModelType
+  internal var disposeBag = DisposeBag()
+  public var _viewModel: any ViewModelType
   
   public init(viewModel: any ViewModelType) {
-    self.viewModel = viewModel
+    self._viewModel = viewModel
     
     super.init(nibName: nil, bundle: nil)
   }
@@ -23,5 +23,10 @@ public class BaseViewController: UIViewController {
     super.viewDidLoad()
     
     self.view.backgroundColor = .white
+    self.bindViewModel()
+  }
+  
+  internal func bindViewModel() {
+    // Override point
   }
 }

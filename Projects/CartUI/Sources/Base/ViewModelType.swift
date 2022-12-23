@@ -8,5 +8,5 @@ public protocol ViewModelType: AnyObject {
   var disposeBag: DisposeBag { get set }
   var input: Input { get }
   var output: Output { get }
-  var model: Model? { get }
+  var model: Model { get }
 }

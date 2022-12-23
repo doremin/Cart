@@ -1,20 +1,20 @@
 import UIKit
 
+import CartCore
+
+import RxCocoa
+import RxSwift
+
 public final class HomeView: BaseView {
-  
-  private let rootContainer = UIView()
+
+  internal let storeTableView = UITableView()
+  internal var selectedStore = PublishRelay<Store>()
   
   public init() {
     super.init(frame: .zero)
     
-    self.backgroundColor = .white
-    
-    self.rootContainer.flex.alignContent(.spaceAround).define { flex in
-      flex.addItem(UIView()).backgroundColor(.black).height(10).marginBottom(20)
-      flex.addItem(UIView()).backgroundColor(.red).height(10)
-    }
-    
-    self.addSubview(self.rootContainer)
+    self.rootContainer.addSubview(self.storeTableView)
+    self.setupTableView()
   }
   
   required init?(coder: NSCoder) {
@@ -24,8 +24,24 @@ public final class HomeView: BaseView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     
-    self.rootContainer.pin.top(pin.safeArea).left().right()
+    self.storeTableView.pin.all()
     
     self.rootContainer.flex.layout()
+  }
+  
+  private func setupTableView() {
+    self.storeTableView.register(StoreTableViewCell.self, forCellReuseIdentifier: Constants.TableViewCellIdentifer.storeTableViewCell)
+    self.storeTableView.rx.setDelegate(self)
+      .disposed(by: self.disposeBag)
+    
+    self.storeTableView.rx.modelSelected(Store.self)
+      .bind(to: self.selectedStore)
+      .disposed(by: self.disposeBag)
+  }
+}
+
+extension HomeView: UITableViewDelegate {
+  public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 220
   }
 }

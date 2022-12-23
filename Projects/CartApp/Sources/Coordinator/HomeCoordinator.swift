@@ -1,5 +1,6 @@
 import UIKit
 
+import CartCore
 import CartUI
 
 class HomeCoordinator: CoordinatorType {
@@ -17,7 +18,9 @@ class HomeCoordinator: CoordinatorType {
       return
     }
     
-    let homeViewModel = HomeViewModel()
+    let storeModel = StoreModel()
+    let homeModel = HomeViewModel.Model(storeModel: storeModel)
+    let homeViewModel = HomeViewModel(model: homeModel)
     let homeViewController = HomeViewController(viewModel: homeViewModel)
     homeViewController.title = "Home"
     homeViewController.tabBarItem.image = UIImage(systemName: "house.fill")
