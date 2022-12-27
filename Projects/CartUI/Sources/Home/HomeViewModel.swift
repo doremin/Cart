@@ -5,7 +5,7 @@ import RxSwift
 
 final public class HomeViewModel: ViewModelType {
   public struct Input {
-    
+    public let selectedStore = PublishRelay<Store>()
   }
   
   public struct Output {
@@ -27,6 +27,7 @@ final public class HomeViewModel: ViewModelType {
   public var model: Model
   public var input: Input
   public var output: Output
+  public weak var coordinator: HomeCoordinator?
   
   public var disposeBag = DisposeBag()
   
@@ -35,6 +36,12 @@ final public class HomeViewModel: ViewModelType {
     
     self.input = Input()
     self.output = Output()
+    
+    self.input.selectedStore
+      .subscribe { [weak self] store in
+        self?.selectStore(store: store)
+      }
+      .disposed(by: self.disposeBag)
   }
   
   public func loadStores() {
@@ -44,7 +51,7 @@ final public class HomeViewModel: ViewModelType {
     }
   }
   
-  public func selectStore(store: Store) {
-    print(store)
+  private func selectStore(store: Store) {
+    self.coordinator?.moveTo(destination: .store)
   }
 }

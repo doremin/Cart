@@ -33,12 +33,9 @@ final public class HomeViewController: BaseViewController {
       .disposed(by: self.disposeBag)
     
     self.mainView.selectedStore
-      .subscribe { [weak self] store in
-        self?.viewModel.selectStore(store: store)
-      }
+      .bind(to: self.viewModel.input.selectedStore)
       .disposed(by: self.disposeBag)
       
-    
     self.viewModel.loadStores()
   }
 }

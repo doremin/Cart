@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CoordinatorType: AnyObject {
+public protocol CoordinatorType: AnyObject {
   
   var presenter: UIViewController { get }
   var children: [CoordinatorType] { get set }
@@ -9,8 +9,8 @@ protocol CoordinatorType: AnyObject {
 }
 
 public class MainCoordinator: CoordinatorType {
-  var presenter: UIViewController
-  var children: [CoordinatorType]
+  public var presenter: UIViewController
+  public var children: [CoordinatorType]
   
   let window: UIWindow?
   
