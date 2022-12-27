@@ -1,8 +1,8 @@
 public struct Store {
-  let id: Int
-  let name: String
-  let isOpen: Bool
-  let thumbnailURL: String?
+  public let id: Int
+  public let name: String
+  public let isOpen: Bool
+  public let thumbnailURL: String?
 }
 
 public extension Store {

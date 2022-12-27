@@ -27,8 +27,8 @@ final public class HomeViewController: BaseViewController {
     self.viewModel.output.stores
       .bind(to: self.mainView.storeTableView.rx.items(
         cellIdentifier: Constants.TableViewCellIdentifer.storeTableViewCell,
-        cellType: StoreTableViewCell.self)) { (i, store, cell) in
-          cell.store = store
+        cellType: StoreTableViewCell.self)) { (_, store, cell) in
+          cell.store.onNext(store)
         }
       .disposed(by: self.disposeBag)
     

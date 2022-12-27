@@ -13,7 +13,6 @@ public final class HomeView: BaseView {
   public init() {
     super.init(frame: .zero)
     
-    self.rootContainer.addSubview(self.storeTableView)
     self.setupTableView()
   }
   
@@ -24,7 +23,9 @@ public final class HomeView: BaseView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     
-    self.storeTableView.pin.all()
+    self.rootContainer.flex.define { flex in
+      flex.addItem(self.storeTableView).grow(1)
+    }
     
     self.rootContainer.flex.layout()
   }
@@ -36,6 +37,13 @@ public final class HomeView: BaseView {
     
     self.storeTableView.rx.modelSelected(Store.self)
       .bind(to: self.selectedStore)
+      .disposed(by: self.disposeBag)
+    
+    self.storeTableView.rx.itemSelected
+      .observe(on: MainScheduler())
+      .subscribe { [weak self] indexPath in
+        self?.storeTableView.deselectRow(at: indexPath, animated: true)
+      }
       .disposed(by: self.disposeBag)
   }
 }
