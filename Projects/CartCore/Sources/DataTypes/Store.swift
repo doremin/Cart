@@ -15,3 +15,5 @@ public extension Store {
     )
   }
 }
+
+extension Store: Equatable { }

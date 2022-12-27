@@ -5,7 +5,7 @@ private func isTesting() -> Bool {
 }
 
 private func appDelegateClassName() -> String {
-  return isTesting() ? "CartApp.StubAppDelegate" : NSStringFromClass(AppDelegate.self)
+  return isTesting() ? "CartAppTests.StubAppDelegate" : NSStringFromClass(AppDelegate.self)
 }
 
 _ = UIApplicationMain(

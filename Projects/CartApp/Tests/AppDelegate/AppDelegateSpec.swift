@@ -8,11 +8,12 @@ import RxNimble
 
 class AppDelegateSpec: QuickSpec {
   override func spec() {
-    var appDelegate: StubAppDelegate!
+    var appDelegate: AppDelegate!
     
     beforeEach {
-      appDelegate = StubAppDelegate()
+      appDelegate = AppDelegate()
     }
+    print(NSStringFromClass(StubAppDelegate.self))
     
     describe("in app delegate") {
       context("did finish launching") {
