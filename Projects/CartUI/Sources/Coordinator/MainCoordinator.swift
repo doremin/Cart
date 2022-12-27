@@ -1,7 +1,5 @@
 import UIKit
 
-import CartUI
-
 protocol CoordinatorType: AnyObject {
   
   var presenter: UIViewController { get }
@@ -10,19 +8,19 @@ protocol CoordinatorType: AnyObject {
   func start()
 }
 
-class MainCoordinator: CoordinatorType {
+public class MainCoordinator: CoordinatorType {
   var presenter: UIViewController
   var children: [CoordinatorType]
   
   let window: UIWindow?
   
-  init(window: UIWindow?) {
+  public init(window: UIWindow?) {
     self.window = window
     self.children = []
     self.presenter = UITabBarController()
   }
   
-  func start() {
+  public func start() {
     guard let presenter = self.presenter as? UITabBarController else {
       return
     }

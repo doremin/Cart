@@ -1,7 +1,6 @@
 import UIKit
 
 import CartCore
-import CartUI
 
 class HomeCoordinator: CoordinatorType {
   

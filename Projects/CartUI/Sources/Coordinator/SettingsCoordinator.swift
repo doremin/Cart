@@ -1,7 +1,5 @@
 import UIKit
 
-import CartUI
-
 class SettingsCoordinator: CoordinatorType {
   
   var presenter: UIViewController
