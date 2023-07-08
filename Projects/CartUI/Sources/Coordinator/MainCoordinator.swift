@@ -1,5 +1,7 @@
 import UIKit
 
+import CartCore
+
 public protocol CoordinatorType: AnyObject {
   
   var presenter: UIViewController { get }
@@ -37,7 +39,8 @@ public class MainCoordinator: CoordinatorType {
   }
   
   private func setupChildren() {
-    self.children = [HomeCoordinator(), SettingsCoordinator()]
+    let basket = BasketModel()
+    self.children = [HomeCoordinator(basketModel: basket), SettingsCoordinator(baksetModel: basket)]
     self.children.forEach { $0.start() }
   }
 }

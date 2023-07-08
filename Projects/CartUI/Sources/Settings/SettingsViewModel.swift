@@ -1,10 +1,20 @@
+import CartCore
+
+import RxCocoa
 import RxSwift
 
 public class SettingsViewModel: ViewModelType {
   public struct Input { }
-  public struct Output { }
+  public struct Output {
+    public let items: PublishRelay<[BasketModel.Item]>
+  }
   public struct Model {
-    public init() { }
+    public let basketModel: BasketModel
+    
+    public init(basketModel: BasketModel) {
+      self.basketModel = basketModel
+    }
+    
   }
   
   public var model: Model
@@ -17,6 +27,12 @@ public class SettingsViewModel: ViewModelType {
     self.model = model
     
     self.input = Input()
-    self.output = Output()
+    self.output = Output(
+      items: .init()
+    )
+    
+    self.model.basketModel.items
+      .bind(to: self.output.items)
+      .disposed(by: self.disposeBag)
   }
 }

@@ -28,11 +28,6 @@ extension Project {
           sources: ["Tests/**"],
           dependencies: [
             .target(name: name),
-            .external(name: "RxBlocking"),
-            .external(name: "RxTest"),
-            .external(name: "Quick"),
-            .external(name: "Nimble"),
-            .external(name: "RxNimble")
           ]
         )
       ]
@@ -65,11 +60,6 @@ extension Project {
           sources: ["Tests/**"],
           dependencies: [
             .target(name: name),
-            .external(name: "RxBlocking"),
-            .external(name: "RxTest"),
-            .external(name: "Quick"),
-            .external(name: "Nimble"),
-            .external(name: "RxNimble")
           ]
         )
       ]

@@ -12,9 +12,12 @@ public class HomeCoordinator: CoordinatorType {
   public var presenter: UIViewController
   public var children: [CoordinatorType]
   
-  init() {
+  private let basketModel: BasketModel
+  
+  init(basketModel: BasketModel) {
     self.presenter = UINavigationController()
     self.children = []
+    self.basketModel = basketModel
   }
   
   public func start() {
@@ -41,9 +44,8 @@ public class HomeCoordinator: CoordinatorType {
     case .home:
       presenter.popToRootViewController(animated: true)
     case .store:
-      let basket = BasketModel()
-      basket.add(item: .init(name: "당근", price: 1500))
-      let viewModel = StoreViewModel(model: .init(basketModel: basket))
+      self.basketModel.add(item: .init(name: "당근", price: 1500))
+      let viewModel = StoreViewModel(model: .init(basketModel: self.basketModel))
       presenter.pushViewController(StoreViewController(viewModel: viewModel), animated: true)
     }
   }
