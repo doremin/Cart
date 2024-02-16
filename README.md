@@ -1,6 +1,6 @@
 # Cart Example
 
-# 장바구니 기능을 구현한 tuist 연습 프로젝트
+장바구니 기능을 구현한 tuist 연습 프로젝트
 
 ## Usage
 1. dependency fetch
